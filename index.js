@@ -131,4 +131,4 @@ app.delete("/student/:id", async function (req, res) {
   //    students.splice(studentindex,1);
  
 });
-app.listen(3001);
+app.listen(process.env.PORT ||3001);

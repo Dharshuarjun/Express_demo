@@ -4,7 +4,7 @@ const cors = require("cors");
 const mongodb = require("mongodb");
 const mongoClient = mongodb.MongoClient;
 const URL = "mongodb+srv://user1:user1@cluster0.357hc.mongodb.net/?retryWrites=true&w=majority";
-
+const dotenv=require("dotenv").config();
 //Middleware
 app.use(express.json());
 app.use(

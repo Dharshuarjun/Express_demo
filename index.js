@@ -9,7 +9,7 @@ const URL = process.env.DB;
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3002",
+    origin: "https://62e134311afed616c9dd47ee--comfy-marshmallow-f551a9.netlify.app/",
   })
 );
 let students = [];

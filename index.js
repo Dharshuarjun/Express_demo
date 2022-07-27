@@ -9,7 +9,7 @@ const URL = process.env.DB;
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://62e134311afed616c9dd47ee--comfy-marshmallow-f551a9.netlify.app/",
+    origin: "http://localhost:3002",
   })
 );
 let students = [];
@@ -23,7 +23,7 @@ app.get("/students", async function (req, res) {
     //select the collection and do operation
     let students = await db.collection("students").find().toArray();
     //close the connection
-    await connection.close();
+    await connection.close(); 
     res.json(students);
   } catch (error) {
     console.log(error);

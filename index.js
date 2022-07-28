@@ -13,6 +13,33 @@ app.use(
   })
 );
 let students = [];
+app.post("/register",async function (req,res){
+  try {
+     //open the connection
+     const connection = await mongoClient.connect(URL);
+     //select the DB
+    const db = connection.db("b35wd");
+
+    // const connection = await mongoclient.connect(URL);  //open the connection 
+
+    // const db = connection.db("students")
+
+    console.log(req.body);
+    //select the collection
+    await db.collection("users").insertOne(req.body);
+    //close the connection
+    await connection.close();
+    
+    res.json({
+      message:"Successfully registered",
+    });
+
+  } catch (error) {
+    res.json({
+      message:"Error",
+    });
+  }
+})
 
 app.get("/students", async function (req, res) {
   try {
@@ -20,6 +47,7 @@ app.get("/students", async function (req, res) {
     const connection = await mongoClient.connect(URL);
     //select the DB
     const db = connection.db("b35wd");
+    
     //select the collection and do operation
     let students = await db.collection("students").find().toArray();
     //close the connection
